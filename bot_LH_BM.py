@@ -9,6 +9,8 @@ bot = telepot.Bot(token)
 topic = "dmr/bmlh/#"
 mqtt_server = "mqtt.iz3mez.it"
 porta = 1883
+TG = 222550
+chat_ID = -1002212992476
 nominativo = 0
 
 
@@ -24,7 +26,7 @@ def on_message(client, userdata, msg):
     global nominativo
     mess_BM = str(msg.payload.decode("utf-8"))
     dictionary = json.loads(mess_BM)
-    if "222550" in str(dictionary["DestinationID"]):
+    if TG in str(dictionary["DestinationID"]):
         new_nom = dictionary['SourceID']
         #print(new_nom)
         #print(nominativo)
@@ -48,7 +50,7 @@ def on_message(client, userdata, msg):
                 if len(dictionary['DestinationCall']) == 0 :
                     dictionary['DestinationCall'] = "Grosseto Talk"
                 stringa = "Call: {}  User ID: {}\nTS: {}  TG: {} ✴️ {}\nRpt: {} [{}-{}]\nTalker Alias: {}\nRSSI: {}dBm  BER: {}%\nFine TX: {}\nDuration: {}s 🔊".format( dictionary['SourceCall'], dictionary['SourceID'], dictionary['Slot'], dictionary['DestinationID'], dictionary['DestinationCall'] ,dictionary['LinkCall'],dictionary['Master'],dictionary['ContextID'], dictionary['TalkerAlias'], dictionary['RSSI'], ber, data, tempo)
-                inviato = bot.sendMessage(-1002212992476, stringa) 
+                inviato = bot.sendMessage(chat_ID, stringa) 
                 nominativo = new_nom
                 print(stringa)
         else:
