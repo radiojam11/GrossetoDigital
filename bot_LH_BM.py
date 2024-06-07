@@ -9,7 +9,7 @@ bot = telepot.Bot(token)
 topic = "dmr/bmlh/#"
 mqtt_server = "mqtt.iz3mez.it"
 porta = 1883
-TG = 222550
+TG = "222550"
 chat_ID = -1002212992476
 nominativo = 0
 
