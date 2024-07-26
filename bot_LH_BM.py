@@ -49,10 +49,13 @@ def on_message(client, userdata, msg):
                     ber = 0
                 if len(dictionary['DestinationCall']) == 0 :
                     dictionary['DestinationCall'] = "Grosseto Talk"
-                stringa = "Call: {}  User ID: {}\nTS: {}  TG: {} ✴️ {}\nRpt: {} [{}-{}]\nTalker Alias: {}\nRSSI: {}dBm  BER: {}%\nFine TX: {}\nDuration: {}s 🔊".format( dictionary['SourceCall'], dictionary['SourceID'], dictionary['Slot'], dictionary['DestinationID'], dictionary['DestinationCall'] ,dictionary['LinkCall'],dictionary['Master'],dictionary['ContextID'], dictionary['TalkerAlias'], dictionary['RSSI'], ber, data, tempo)
-                inviato = bot.sendMessage(chat_ID, stringa) 
-                nominativo = new_nom
-                print(stringa)
+                try:
+                    stringa = "Call: {}  User ID: {}\nTS: {}  TG: {} ✴️ {}\nRpt: {} [{}-{}]\nTalker Alias: {}\nRSSI: {}dBm  BER: {}%\nFine TX: {}\nDuration: {}s 🔊".format( dictionary['SourceCall'], dictionary['SourceID'], dictionary['Slot'], dictionary['DestinationID'], dictionary['DestinationCall'] ,dictionary['LinkCall'],dictionary['Master'],dictionary['ContextID'], dictionary['TalkerAlias'], dictionary['RSSI'], ber, data, tempo)
+                    inviato = bot.sendMessage(chat_ID, stringa) 
+                    nominativo = new_nom
+                    #print(stringa)
+                except:
+                    pass
         else:
             nominativo = 0
 
